@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site Profissional</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f8f5f2;
+            color: #241f23;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #4b164c;
+            color: white;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 3px 15px rgba (0,0,0.15);
+        }
+
+        header h2 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: 2px;
+            color: #ff7300;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff7300;
+        }
+
+        .hero {
+    max-width: 1200px;
+    min-height: 650px;
+    margin: 0 auto;
+    padding: 80px 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.hero-text {
+    flex: 1;
+    text-align: left;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 420px;
+    height: 480px;
+    object-fit: cover;
+    border-radius: 30px;
+    box-shadow: 0 25px 60px rgba(75,22,76,0.20);
+}
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .hero-subtitle {
+            color: #ff7300;
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-family: georgia, serif;
+            font-size: 48px;
+            font-weight: 500;
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin: 10px 0 20px;
+            color: #4b164c;
+        }
+
+        .hero p:not(.hero-subtitle) {
+            font-size: 40px;
+            color: #4b164c;
+            max-width: 650px;
+        }
+
+        .btn-main {
+            display: inline-block;
+            text-decoration: none;
+            background: #4b164c;
+            color: white;
+            border: none;
+            padding: 16px 35px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: background 0.3s;
+        }
+
+        .btn-main:hover {
+            background: #ff7300;
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 250px;
+            box-shadow: 0 4px 6px #4b164c;
+        }
+
+        /* Seção de Contato */
+        .contato-wrapper {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px #4b164c;
+            max-width: 600px;
+            margin: 30px auto 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #111;
+        }
+
+        .btn-submit {
+            background: #111;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #333;
+        }
+
+        .btn-submit:disabled {
+            background: #888;
+            cursor: not-allowed;
+        }
+
+        #mensagemStatus {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            display: none;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .sucesso {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .erro {
+            background: #f8d7da;
+            color: #4b164c;
+            border: 1px solid #f5c6cb;
+        }
+
+        .produtos {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+        .container{
+            width: 100%;
+        }
+
+        .produto {
+            background: #ffffff;
+            padding: 18px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(75, 22, 76, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .produto:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(75, 22, 76, 0.15);
+        }
+
+        .produto img {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+            border-radius: 12px;
+            background:#ffffff;
+        }
+
+        .produto h3 {
+            color: #4b164c;
+            font-family: Georgia, serif;
+            font-size: 20px;
+            line-height: 1.3;
+            margin: 18px 0 8px;
+        }
+
+        .preco {
+            color: #4b164c;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 18px 0;
+        }
+
+        .btn-comprar {
+            display: inline-block;
+            background: #4b164c;
+            color: white;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-comprar:hover {
+            background: #e69a3a;
+            transform: translateY(-2px);
+        }
+
+        .btn-carrinho {
+            background: #ff7300;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 25px;
+            transition: 0.3s;
+        }
+
+        .btn-carrinho:hover {
+            background: #e69a3a;
+            transform: translateY(-2px);
+        }
+
+        #contadorCarrinho {
+            margin-left: 5px;
+        }
+
+        .carrinho {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background: #ffffff;
+            z-index: 1000;
+            padding: 25px;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+            transition: right 0.3s ease;
+        }
+
+        .carrinho.aberto{
+            right: 0;
+        }
+
+        .carrinho-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .carrinho-header h2 {
+            color: #4b164c;
+            margin: 0;
+        }
+
+        #fecharCarrinho {
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #4b164c;
+        }
+
+        #itensCarrinho {
+            margin-top: 25px;
+        }
+
+        .item-carrinho {
+    color: #4b164c;
+    background: #f8f5f2;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+}
+
+.item-carrinho strong {
+    display: block;
+    color: #4b164c;
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+.item-carrinho p {
+    margin: 0;
+    color: #777;
+    font-size: 15px;
+}
+
+.controles-carrinho {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.controles-carrinho button {
+    border: none;
+    background: #4b164c;
+    color: #ff7300;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.controles-carrinho button:hover {
+    background: #4b164c;
+    color: white;
+}
+
+.controles-carrinho span {
+    min-width: 25px;
+    text-align: center;
+    font-weight: bold;
+    color: #4b164c;
+}
+
+.controles-carrinho .btn-remover {
+    width: auto;
+    height: 32px;
+    padding: 0 12px;
+    margin-left: 5px;
+    background: transparent;
+    color: #777;
+    border: none;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.controles-carrinho .btn-remover:hover {
+    background: #4b164c;
+    color: #ff7300;
+}
+
+        .carrinho-total {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 18px;
+            color: #4b164c;
+        }
+
+        .btn-finalizar {
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px;
+            background: #4b164c;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+
+        }
+
+        .btn-finalizar:hove {
+            background: #ff7300;
+            transform: translateY(-2px);
+        }
+       
+        @media (max-width: 700px) {
+        
+        .produtos {
+            grid-template-columns: 1fr;
+        }
+
+        }
+    
+        .btn-comprar:hover {
+            background: #e69a3a;
+            transform: translateY(-2px);
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <header>
+        <h2>VINORA|134</h2>
+        <nav>
+    <a href="#home">Início</a>
+    <a href="#vinhos">Vinhos</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#contato">Contato</a>
+</nav>
+
+<button id="btnCarrinho" class="btn-carrinho">
+    🛒 <span id="contadorCarrinho">0</span>
+    </button>
+
+<div id="carrinho" class="carrinho">
+    <div class="carrinho-header">
+        <h2>Seu Carrinho</h2>
+        <button id="fecharCarrinho">×</button>
+    </div>
+
+    <div id="itensCarrinho">
+        <p>Seu carrinho está vazio.</p>
+    </div>
+
+    <div class="carrinho-total">
+        Total: <strong id="totalCarrinho">R$ 0,00</strong>
+    </div>
+
+    <button id="finalizarPedido" class="btn-finalizar">
+        finalizar pedido pelo whatsApp
+    </button>
+</div>
+     
+
+   </header>
+
+    <main id="home" class="hero">
+
+    <div class="hero-text">
+
+        <p class="hero-subtitle">VINORA 134</p>
+
+        <h1>
+            Uma boa história<br>
+            começa com um vinho.
+        </h1>
+
+        <p>
+            Uma curadoria especial de vinhos para transformar
+            momentos simples em experiências inesquecíveis.
+        </p>
+
+        <a href="#vinhos" class="btn-main">
+            Explorar vinhos
+</a>
+        </button>
+
+    </div>
+
+    <div class="hero-image">
+        <img src="Imagens/vinho-destaque.jpg" alt="Vinho em destaque">
+    </div>
+
+</main>
+
+  <section id="vinhos" class="container">
+
+    <h2 class="titulo-vinhos">Nossos Vinhos</h2>
+
+    <p class="subtitulo-vinhos">
+        Uma Seleção especial para todos os momentos.
+
+    </p>
+
+    <div class="produtos">
+
+        <div class="produto" data-nome="Tarapacá" data-preco="79.90">
+            <img src="Imagens/tarapaca.jpg" alt="Vinho Tarapacá">
+
+            <h3>Tarapacá</h3>
+
+            <p>Vinho Reserva Carmenère 2023</p>
+
+            <div class="preco">R$ 79,90</div>
+
+            <a class="btn-comprar btn-adicionar"
+               href="https://wa.me/5551999083309?text=Olá!%20Tenho%20interesse%20no%20vinho%20Tarapacá%20por%20R$%2079,90."
+               target="_blank">
+                Comprar
+            </a>
+        </div>
+
+
+        <div class="produto" data nome="Latitud 33" data-preco="59.90">
+            <img src="Imagens/latitud 33.jpg" alt="Vinho Latitud 33">
+
+            <h3>Latitud 33</h3>
+
+            <p>Vinho Malbec Rosé 2025<br>Mendoza | Argentina</p>
+
+            <div class="preco">R$ 59,90</div>
+
+            <a class="btn-comprar btn-adicionar"
+               href="https://wa.me/5551999083309?text=Olá!%20Tenho%20interesse%20no%20vinho%20Latitud%2033%20por%20R$%2059,90."
+               target="_blank">
+                Comprar
+            </a>
+        </div>
+
+
+        <div class="produto" data-nome="Miolo Reserva Sauvignon Blanc" data-preco="59.90">
+            <img src="Imagens/miolo reserva.jpg" alt="Miolo Reserva">
+
+            <h3>Miolo Reserva Sauvignon Blanc</h3>
+
+            <p>Vinho selecionado 2025</p>
+
+            <div class="preco">R$ 59,90</div>
+
+            <a class="btn-comprar btn-adicionar"
+               href="https://wa.me/5551999083309?text=Olá!%20Tenho%20interesse%20no%20vinho%20Miolo%20Reserva%20por%20R$%2059,90."
+               target="_blank">
+                Comprar
+            </a>
+        </div>
+
+
+        <div class="produto" data-nome="Miolo Single Vineyard" data-preco="79.90">
+            <img src="Imagens/miolo single.jpg" alt="Miolo Single Vineyard">
+
+            <h3>Miolo Single Vineyard</h3>
+
+            <p>Riesling Johannisberg 2024<br>Garrafa Nº 01608</p>
+
+            <div class="preco">R$ 79,90</div>
+
+            <a class="btn-comprar btn-adicionar"
+               href="https://wa.me/5551999083309?text=Olá!%20Tenho%20interesse%20no%20vinho%20Miolo%20Single%20por%20R$%2079,90."
+               target="_blank">
+                Comprar
+            </a>
+        </div>
+
+    </div>
+
+</section>
+</section>
+
+    <section id="sobre" class="container">
+        <h2>Sobre Nós</h2>
+        <p>Estou aprendendo desenvolvimento web e construindo minhas primeiras páginas com HTML, CSS e JavaScript.</p>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Design Clean</h3>
+                <p>Estrutura simples, moderna e focada na experiência do usuário.</p>
+            </div>
+            <div class="card">
+                <h3>Responsivo</h3>
+                <p>Layout projetado para se adaptar a diferentes tamanhos de tela.</p>
+            </div>
+            <div class="card">
+                <h3>Código Limpo</h3>
+                <p>Organização clara para facilitar a manutenção e novas ideias.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="container">
+        <h2>Fale Conosco</h2>
+        <div class="contato-wrapper">
+            <!-- SUBSTITUA O URL ABAIXO PELO SEU LINK DO FORMSPREE -->
+            <form id="formContato" action="https://formspree.io/f/xjybnayb" method="POST">
+                
+                <div class="form-group">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="name" placeholder="Seu nome completo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" name="message" rows="5" placeholder="Escreva sua mensagem..." required></textarea>
+                </div>
+
+                <button type="submit" id="btnSubmit" class="btn-submit">Enviar Mensagem</button>
+            </form>
+
+            <div id="mensagemStatus"></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 - VINORA 134.</p>
+    </footer>
+
+    <script> const botoesAdicionar = document.querySelectorAll('.btn-adicionar');
+
+const contadorCarrinho = document.getElementById('contadorCarrinho');
+const itensCarrinho = document.getElementById('itensCarrinho');
+const totalCarrinho = document.getElementById('totalCarrinho');
+
+const btnCarrinho = document.getElementById('btnCarrinho');
+const carrinho = document.getElementById('carrinho');
+const fecharCarrinho = document.getElementById('fecharCarrinho');
+
+let carrinhoProdutos = [];
+
+
+// ==============================
+// ADICIONAR PRODUTO
+// ==============================
+
+botoesAdicionar.forEach(botao => {
+
+    botao.addEventListener('click', (event) => {
+
+        event.preventDefault();
+
+        const produto = botao.closest('.produto');
+
+        const nome =
+            produto.dataset.nome ||
+            produto.querySelector('h3').textContent.trim();
+
+        const preco = parseFloat(produto.dataset.preco);
+
+        const produtoExistente = carrinhoProdutos.find(
+            item => item.nome === nome
+        );
+
+        if (produtoExistente) {
+
+            produtoExistente.quantidade++;
+
+        } else {
+
+            carrinhoProdutos.push({
+                nome: nome,
+                preco: preco,
+                quantidade: 1
+            });
+
+        }
+
+        atualizarCarrinho();
+
+        carrinho.classList.add('aberto');
+
+    });
+
+});
+
+
+// ==============================
+// ATUALIZAR CARRINHO
+// ==============================
+
+function atualizarCarrinho() {
+
+    itensCarrinho.innerHTML = '';
+
+    let total = 0;
+    let quantidadeTotal = 0;
+
+    carrinhoProdutos.forEach((item, index) => {
+
+        const subtotal = item.preco * item.quantidade;
+
+        total += subtotal;
+
+        quantidadeTotal += item.quantidade;
+
+        const div = document.createElement('div');
+
+        div.className = 'item-carrinho';
+
+        div.innerHTML = `
+
+            <strong>${item.nome}</strong>
+
+            <p>
+                R$ ${item.preco.toFixed(2).replace('.', ',')}
+            </p>
+
+            <div class="controles-carrinho">
+
+                <button onclick="alterarQuantidade(${index}, -1)">
+                    −
+                </button>
+
+                <span>${item.quantidade}</span>
+
+                <button onclick="alterarQuantidade(${index}, 1)">
+                    +
+                </button>
+
+                <button
+                    class="btn-remover"
+                    onclick="removerProduto(${index})">
+                    Remover
+                </button>
+
+            </div>
+
+        `;
+
+        itensCarrinho.appendChild(div);
+
+    });
+
+
+    if (carrinhoProdutos.length === 0) {
+
+        itensCarrinho.innerHTML =
+            '<p>Seu carrinho está vazio.</p>';
+
+    }
+
+
+    contadorCarrinho.textContent = quantidadeTotal;
+
+    totalCarrinho.textContent =
+        `R$ ${total.toFixed(2).replace('.', ',')}`;
+
+}
+
+
+// ==============================
+// AUMENTAR / DIMINUIR QUANTIDADE
+// ==============================
+
+function alterarQuantidade(index, valor) {
+
+    carrinhoProdutos[index].quantidade += valor;
+
+    if (carrinhoProdutos[index].quantidade <= 0) {
+
+        carrinhoProdutos.splice(index, 1);
+
+    }
+
+    atualizarCarrinho();
+
+}
+
+
+// ==============================
+// REMOVER PRODUTO
+// ==============================
+
+function removerProduto(index) {
+
+    carrinhoProdutos.splice(index, 1);
+
+    atualizarCarrinho();
+
+}
+
+
+// ==============================
+// ABRIR CARRINHO
+// ==============================
+
+btnCarrinho.addEventListener('click', () => {
+
+    carrinho.classList.add('aberto');
+
+});
+
+
+// ==============================
+// FECHAR CARRINHO
+// ==============================
+
+fecharCarrinho.addEventListener('click', () => {
+
+    carrinho.classList.remove('aberto');
+
+});
+
+const finalizarPedido = document.getElementById('finalizarPedido');
+
+finalizarPedido.addEventListener('click', () => {
+
+    if (carrinhoProdutos.length === 0) {
+        alert('Seu carrinho está vazio.');
+        return;
+    }
+
+    let mensagem = 'Olá! Gostaria de fazer este pedido:%0A%0A';
+
+    let total = 0;
+
+    carrinhoProdutos.forEach(item => {
+
+        const subtotal = item.preco * item.quantidade;
+
+        total += subtotal;
+
+        mensagem += `${item.quantidade}x ${item.nome} - R$ ${subtotal.toFixed(2).replace('.', ',')}%0A`;
+    });
+
+    mensagem += `%0ATotal: R$ ${total.toFixed(2).replace('.', ',')}`;
+
+    const numeroWhatsApp = '5551999083309';
+
+    const url = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
+
+    window.open(url, '_blank');
+
+});
+
+
+// ==============================
+// FORMULÁRIO DE CONTATO
+// ==============================
+
+const formContato = document.getElementById('formContato');
+
+const mensagemStatus =
+    document.getElementById('mensagemStatus');
+
+const btnSubmit =
+    document.getElementById('btnSubmit');
+
+
+formContato.addEventListener('submit', async (event) => {
+
+    event.preventDefault();
+
+    btnSubmit.disabled = true;
+
+    btnSubmit.innerText = 'Enviando...';
+
+    const formData = new FormData(formContato);
+
+    try {
+
+        const response = await fetch(formContato.action, {
+
+            method: formContato.method,
+
+            body: formData,
+
+            headers: {
+                'Accept': 'application/json'
+            }
+
+        });
+
+
+        if (response.ok) {
+
+            mensagemStatus.className = 'sucesso';
+
+            mensagemStatus.innerText =
+                'Mensagem enviada com sucesso! Em breve entrarei em contato.';
+
+            mensagemStatus.style.display = 'block';
+
+            formContato.reset();
+
+        } else {
+
+            throw new Error('Erro na resposta do servidor.');
+
+        }
+
+    } catch (error) {
+
+        mensagemStatus.className = 'erro';
+
+        mensagemStatus.innerText =
+            'Ops! Ocorreu um problema ao enviar sua mensagem.';
+
+        mensagemStatus.style.display = 'block';
+
+    } finally {
+
+        btnSubmit.disabled = false;
+
+        btnSubmit.innerText = 'Enviar Mensagem';
+
+        setTimeout(() => {
+
+            mensagemStatus.style.display = 'none';
+
+        }, 5000);
+
+    }
+
+});
+    </script>
+
+</body>
+
+</html>
