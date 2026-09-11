@@ -15,7 +15,7 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #f8f5f2;
+            background: #ffffff;
             color: #241f23;
             line-height: 1.6;
         }
@@ -700,11 +700,248 @@
         flex-shrink: 0;
     }
 
+    /* ============================= */
+    /* TELA DE VERIFICAÇÃO DE IDADE */
+    /* ============================= */
+
+    .verificacao-idade {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+
+        width: 100vw !important;
+        height: 100vh !important;
+
+        background: rgba(20, 10, 20, 0.82) !important;
+
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+
+        z-index: 999999 !important;
+
+        margin: 0 !important;
+        padding: 20px !important;
+
+        box-sizing: border-box !important;
+}
+
+    .caixa-idade {
+        width: 100% !important;
+        max-width: 430px !important;
+
+        background: #ffffff !important;
+
+        padding: 45px 35px !important;
+
+        border-radius: 22px !important;
+
+        text-align: center !important;
+
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45) !important;
+
+        box-sizing: border-box !important;
+}
+
+    .logo-idade {
+        color: #4b164c !important;
+
+        font-family: Georgia, serif !important;
+
+        font-size: 30px !important;
+
+        font-weight: bold !important;
+
+        margin-bottom: 25px !important;
+}
+
+    .caixa-idade h2 {
+        color: #4b164c !important;
+
+        font-family: Georgia, serif !important;
+
+        font-size: 30px !important;
+
+        margin: 0 0 15px 0 !important;
+}
+
+    .caixa-idade p {
+        color: #555555 !important;
+
+        font-family: Arial, sans-serif !important;
+
+        font-size: 16px !important;
+
+        line-height: 1.5 !important;
+
+        margin: 0 0 30px 0 !important;
+}
+
+    .botoes-idade {
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        gap: 12px !important;
+}
+
+    .botoes-idade button {
+        width: 100% !important;
+
+        border: none !important;
+
+        padding: 15px 20px !important;
+
+        border-radius: 30px !important;
+
+        font-size: 16px !important;
+
+        font-weight: bold !important;
+
+        cursor: pointer !important;
+}
+
+#btnMaior18 {
+    background: #4b164c !important;
+    color: white !important;
+    width: 100%;
+    border: none;
+    padding: 16px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 18px rgba(75, 22, 76, 0.25);
+}
+
+#btnMaior18:hover {
+    background: #e69a3a !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(230, 154, 58, 0.30);
+}
+
+
+#btnMenor18 {
+    background: transparent !important;
+    color: #777777 !important;
+    width: 100%;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#btnMenor18:hover {
+    color: #4b164c !important;
+    background: #f5f2f5 !important;
+}
+
     </style>
 
 </head>
 
 <body>
+
+    <div id="verificacaoIdade" style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.80);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+    padding: 20px;
+    box-sizing: border-box;
+">
+
+    <div style="
+        width: 100%;
+        max-width: 430px;
+        background: #ffffff;
+        padding: 45px 35px;
+        border-radius: 22px;
+        text-align: center;
+        box-sizing: border-box;
+        box-shadow: 0 25px 80px rgba(0,0,0,0.45);
+    ">
+
+        <div style="
+            color: #4b164c;
+            font-family: Georgia, serif;
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        ">
+            VINORA|134
+        </div>
+
+        <h2 style="
+            color: #4b164c;
+            font-family: Georgia, serif;
+            font-size: 30px;
+            margin: 0 0 15px 0;
+        ">
+            Você tem 18 anos ou mais?
+        </h2>
+
+        <p style="
+            color: #555;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 0 0 30px 0;
+        ">
+            Para acessar a VINORA 134, você precisa ter 18 anos ou mais.
+        </p>
+
+        <div style="
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        ">
+
+            <button type="buton" id="btnMaior18" style="
+                width: 100%;
+                border: none;
+                padding: 15px 20px;
+                border-radius: 30px;
+                background: #4b164c;
+                color: white;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+            ">
+                Sim, tenho 18 anos
+            </button>
+
+            <button id="btnMenor18" style="
+                width: 100%;
+                border: none;
+                padding: 15px 20px;
+                border-radius: 30px;
+                background: #eeeeee;
+                color: #555;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+            ">
+                Não, sou menor de 18 anos
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
 
     <header>
         <h2>VINORA|134</h2>
@@ -844,7 +1081,7 @@
 
             <h3>Miolo Single</h3>
 
-            <p>Riesling Johannisberg Garrafa Nº 01608</p>
+            <p>Riesling Johannisberg<br>Garrafa Nº 01608</p>
 
             <div class="preco">R$ 79,90</div>
 
@@ -1232,6 +1469,20 @@ campoPesquisa.addEventListener('input', function () {
     });
 
 });
+
+const telatarde = document.getElementById('verificacaoIdade');
+
+const btnMaior18 = document.getElementById('btnMaior18');
+const btnMenor18 = document.getElementById('btnMenor18');
+
+btnMaior18.addEventListener('click', function () {
+    telatarde.remove();
+});
+
+btnMenor18.addEventListener('click', function () {
+    alert('Você precisa ter 18 anos ou mais para acessar a VINORA 134.');
+});
+
 
     </script>
 
