@@ -167,6 +167,47 @@
             margin: 30px auto 0 auto;
         }
 
+        .contatos-diretos {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .contato-whatsapp {
+            display: inline-block;
+            background: #25d366;
+            color: white;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 17px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .contato-whatsapp:hover {
+            background: #1ebe5d;
+            transform: translateY(-2px);
+        }
+
+
+        .contato-instagram {
+            display: inline-block;
+            background: #4b164c;
+            color: white;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 17px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .contato-instagram:hover {
+            background: #e69a3a;
+            transform: translateY(-2px);
+        }
+
         .form-group {
             margin-bottom: 20px;
             text-align: left;
@@ -366,15 +407,18 @@
         }
 
         #itensCarrinho {
-            margin-top: 25px;
+            max-height: 380px;
+            overflow-y: auto;
+            padding-right: 8px;
         }
 
         .item-carrinho {
-    color: #4b164c;
-    background: #f8f5f2;
-    padding: 15px;
-    margin-bottom: 12px;
-    border-radius: 12px;
+            color: #4b164c;
+            background: #f8f5f2;
+            padding: 20px;
+            margin-bottom: 16px;
+            border-radius: 18px;
+            box-shadow: 0 6px 20px rgba(75, 22, 76, 0.06);
 }
 
 .item-carrinho strong {
@@ -393,8 +437,8 @@
 .controles-carrinho {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-top: 14px;
+    gap: 12px;
+    margin-top: 16px;
 }
 
 .controles-carrinho button {
@@ -423,13 +467,15 @@
 .controles-carrinho .btn-remover {
     width: auto;
     height: 32px;
-    padding: 0 12px;
-    margin-left: 5px;
+    padding: 0 14px;
+    margin-left: 8px;
     background: transparent;
-    color: #777;
-    border: none;
+    color: #4b164c;
+    border: 1px solid #4b164c;
     font-size: 13px;
-    font-weight: normal;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .controles-carrinho .btn-remover:hover {
@@ -564,6 +610,58 @@
     }
 }
 
+    .contatos-diretos .contato-instagram{
+        display: inline-block;
+        background: #4b164c !important;
+        color: white !important;
+        text-decoration: none !important;
+        padding: 14px 28px;
+        border-radius: 30px;
+        font-size: 17px;
+        font-weight: bold;
+        margin-left: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .contatos-diretos .contato-instagram:hover {
+        background: #e69a3a !important;
+        color: white !important;
+        transform: translateY(-2px);
+    }
+
+    .contatos-diretos a.contato-whatsapp {
+        display: inline-block;
+        background: #25d366;
+        color: white;
+        text-decoration: none;
+        padding: 14px 28px;
+        border-radius: 30px;
+        font-size: 17px;
+        font-weight: bold;
+        margin: 5px;
+    }
+
+    .contatos-diretos a.contato-instagram {
+        display: inline-block;
+        background: #e69a3a;
+        color: white;
+        text-decoration: none;
+        padding: 14px 28px;
+        border-radius: 30px;
+        font-size: 17px;
+        font-weight: bold;
+        margin: 5px;
+    }
+
+    .imagem-carrinho {
+        width: 80px;
+        height: 100px;
+        object-fit: contain;
+        border-radius: 10px;
+        background: #ffffff;
+        flex-shrink: 0;
+    }
+
     </style>
 
 </head>
@@ -575,7 +673,6 @@
         <nav>
     <a href="#home">Início</a>
     <a href="#vinhos">Vinhos</a>
-    <a href="#sobre">Sobre</a>
     <a href="#contato">Contato</a>
 </nav>
 
@@ -715,28 +812,19 @@
 </section>
 </section>
 
-    <section id="sobre" class="container">
-        <h2>Sobre Nós</h2>
-        <p>Estou aprendendo desenvolvimento web e construindo minhas primeiras páginas com HTML, CSS e JavaScript.</p>
-
-        <div class="grid">
-            <div class="card">
-                <h3>Design Clean</h3>
-                <p>Estrutura simples, moderna e focada na experiência do usuário.</p>
-            </div>
-            <div class="card">
-                <h3>Responsivo</h3>
-                <p>Layout projetado para se adaptar a diferentes tamanhos de tela.</p>
-            </div>
-            <div class="card">
-                <h3>Código Limpo</h3>
-                <p>Organização clara para facilitar a manutenção e novas ideias.</p>
-            </div>
-        </div>
+    
     </section>
 
     <section id="contato" class="container">
         <h2>Fale Conosco</h2>
+        <div class="contatos-diretos">
+<a href="https://wa.me/51999083309" target="_blank" class="contato-whatsapp" style="display:inline-block; background:#25D366; color:white; text-decoration:none; padding:14px 28px; border-radius:30px; font-size:17px; font-weight:bold;"> 
+    💬 Fale conosco pelo whatsApp
+ </a>
+ <a href="https://www.instagram.com/vinora134_/" target="_blank" class="contato-instagram" style="display:inline-block; background:#E69A3A; color:white; text-decoration:none; padding:14px 28px; border-radius:30px; font-size:17px; font-weight:bold;">
+    📱 Siga a VINORA 134 no Instagram
+</a>
+        </div>
         <div class="contato-wrapper">
             <!-- SUBSTITUA O URL ABAIXO PELO SEU LINK DO FORMSPREE -->
             <form id="formContato" action="https://formspree.io/f/xjybnayb" method="POST">
@@ -811,7 +899,8 @@ botoesAdicionar.forEach(botao => {
             carrinhoProdutos.push({
                 nome: nome,
                 preco: preco,
-                quantidade: 1
+                quantidade: 1,
+                imagem: produto.querySelector('img').src
             });
 
         }
@@ -848,15 +937,20 @@ function atualizarCarrinho() {
 
         div.className = 'item-carrinho';
 
-        div.innerHTML = `
+        div.innerHTML = ` 
+    <img src="${item.imagem}" alt="${item.nome}" class="imagem-carrinho">
 
-            <strong>${item.nome}</strong>
+    <div class="info-carrinho">
+        <strong>${item.nome}</strong>
+        <p>
+            R$ ${item.preco.toFixed(2).replace('.', ',')} cada
+        </p>
 
-            <p>
-                R$ ${item.preco.toFixed(2).replace('.', ',')}
-            </p>
+    <p class="subtotal-item">
+        Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}
+    </p>
 
-            <div class="controles-carrinho">
+    <div class="controles-carrinho">
 
                 <button onclick="alterarQuantidade(${index}, -1)">
                     −
@@ -874,6 +968,8 @@ function atualizarCarrinho() {
                     Remover
                 </button>
 
+            </div>
+            
             </div>
 
         `;
