@@ -40,6 +40,30 @@
             color: #ff7300;
         }
 
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 30px;
+        }
+
+        .search-box span {
+            font-size: 20px;
+        }
+        
+        .search-box input {
+            width: 200px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 25px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .search-box input:focus {
+            box-shadow: 0 0 0 2px #e69a3a;
+        }
+
         nav a {
             color: #ffffff;
             text-decoration: none;
@@ -676,6 +700,14 @@
     <a href="#contato">Contato</a>
 </nav>
 
+<div class="search-box">
+    <span>🔍</span>
+    <input
+        type="text"
+        id="pesquisa"
+        placeholder="pesquisar vinhos..."
+        >
+</div>
 <button id="btnCarrinho" class="btn-carrinho">
     🛒 <span id="contadorCarrinho">0</span>
     </button>
@@ -717,7 +749,7 @@
         </p>
 
         <a href="#vinhos" class="btn-main">
-            Explorar vinhos
+            Ver Vinhos →
 </a>
         </button>
 
@@ -1160,6 +1192,31 @@ formContato.addEventListener('submit', async (event) => {
     }
 
 });
+
+const campoPesquisa = document.getElementById('pesquisa');
+const produtos = document.querySelectorAll('.produto');
+
+campoPesquisa.addEventListener('input', function () {
+
+    const texto = campoPesquisa.value.toLowerCase().trim();
+
+    produtos.forEach(function (produto) {
+
+        const nome = produto
+            .querySelector('h3')
+            .textContent
+            .toLowerCase();
+
+        if (nome.includes(texto)) {
+            produto.style.display = '';
+        } else {
+            produto.style.display = 'none';
+        }
+
+    });
+
+});
+
     </script>
 
 </body>
