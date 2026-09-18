@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vinhos Rosé | VINORA 134</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f5f2;
+            color: #333;
+        }
+
+        header {
+            background: #4b164c;
+            color: white;
+            padding: 25px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header h2 {
+            color: #e69a3a;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #e69a3a;
+        }
+
+        .titulo {
+            text-align: center;
+            padding: 70px 20px 30px;
+        }
+
+        .titulo h1 {
+            font-family: Georgia, serif;
+            font-size: 48px;
+            color: #4b164c;
+            margin-bottom: 15px;
+        }
+
+        .titulo p {
+            color: #777;
+            font-size: 18px;
+        }
+
+        .produtos {
+            max-width: 1200px;
+            margin: 40px auto 80px;
+            padding: 0 20px;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .produto {
+            background: white;
+            border-radius: 20px;
+            padding: 18px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(75, 22, 76, 0.08);
+            transition: 0.3s;
+        }
+
+        .produto:hover {
+            transform: translateY(-6px);
+        }
+
+        .produto img {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+        }
+
+        .produto h3 {
+            color: #4b164c;
+            font-family: Georgia, serif;
+            font-size: 20px;
+            margin: 15px 0 8px;
+        }
+
+        .produto p {
+            color: #777;
+            font-size: 14px;
+            min-height: 40px;
+        }
+
+        .preco {
+            color: #4b164c;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 18px 0;
+        }
+
+        .btn-comprar {
+            display: inline-block;
+            background: #4b164c;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-comprar:hover {
+            background: #e69a3a;
+        }
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 20px;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                gap: 18px;
+            }
+
+            .titulo h1 {
+                font-size: 38px;
+            }
+
+            .produtos {
+                grid-template-columns: 1fr;
+                width: 90%;
+            }
+
+        }
+
+        .btn-carrinho {
+    background: #E69A3A;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-carrinho:hover {
+    background: #E69A3A;
+}
+
+.carrinho {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 380px;
+    height: 100vh;
+    background: white;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+    z-index: 9999;
+    padding: 25px;
+    transition: right 0.3s ease;
+}
+
+.carrinho.aberto {
+    right: 0;
+}
+
+.carrinho-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+}
+
+.carrinho-header h2 {
+    color: #4B164C;
+}
+
+.carrinho-header button {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.carrinho-footer {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    right: 25px;
+}
+
+.btn-finalizar {
+    width: 100%;
+    margin-top: 15px;
+    padding: 14px;
+    background: #4B164C;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+header nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 35px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header h2 {
+    margin: 0;
+}
+
+.btn-carrinho {
+    margin-left: auto;
+}
+
+.titulo {
+    text-align: center;
+    padding: 70px 20px 30px;
+}
+
+.titulo h1 {
+    color: #4B164C;
+    font-family: Georgia, serif;
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.titulo p {
+    color: #777;
+    font-size: 18px;
+}
+
+.produtos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: 30px auto 80px;
+    padding: 0 20px;
+}
+
+.produto {
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(75, 22, 76, 0.10);
+    transition: 0.3s ease;
+}
+
+.produto:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(75, 22, 76, 0.18);
+}
+
+.produto img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+}
+
+.produto h3 {
+    color: #4B164C;
+    font-family: Georgia, serif;
+    font-size: 22px;
+    margin: 15px 0 8px;
+}
+
+.produto p {
+    color: #777;
+}
+
+.preco {
+    color: #4B164C;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 18px 0;
+}
+
+.btn-adicionar {
+    background: #4B164C;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-adicionar:hover {
+    background: #E69A3A;
+}
+
+.item-carrinho {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+.info-carrinho {
+    flex: 1;
+}
+
+.info-carrinho strong {
+    display: block;
+    color:  #4b164c;
+    font-size:  17px;
+    margin-bottom: 5px;
+}
+
+.info-carrinho p {
+    margin:  0 0 8px;
+    color: #777;
+    font-size: 14px;
+}
+
+.subtotal-carrinho {
+    color: #4b164c;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.controles-carrinho {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.controles-carrinho button {
+    border: none;
+    background: #4b164c;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.controles-carrinho span {
+    font-weight: bold;
+}
+
+.controles-carrinho .btn-remover {
+    background: transparent;
+    color: #b00020;
+    width: auto;
+    border-radius: 0;
+    margin-left: 5px;
+}
+
+#itensCarrinho {
+    display: block !important;
+    visibility: visible !important;
+    color: #333 !important;
+    min-height: 100px;
+    overflow: auto;
+}
+
+.item-carrinho {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #333 !important;
+    border-bottom: 1px solid #ddd;
+    gap: 15px;
+}
+
+.item-carrinho img {
+    display: block !important;
+    width: 70px !important;
+    height: 90px !important;
+    object-fit: contain;
+}
+
+.info-carrinho {
+    display: block !important;
+    visibility: visible !important;
+    color: #333 !important;
+}
+
+.info-carrinho strong {
+    display: block !important;
+    color: #4b164c;
+    margin: 5px 0;
+}
+
+.subtotal-carrinho {
+    display: block !important;
+    color: #4b164c !important;
+    font-weight: bold;
+}
+
+  
+  </style>
+</head>
+
+<body>
+
+    <header>
+
+        <h2>VINORA|134</h2>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="index.html#vinhos">Vinhos</a>
+            <a href="index.html#contato">Contato</a>
+        </nav>
+<button id="btnCarrinho" class="btn-carrinho">
+    🛒 <span id="contadorCarrinho">0</span>
+</button> 
+
+    </header>
+
+
+<div id="carrinho" class="carrinho">
+    <div class="carrinho-header">
+        <h2>Seu Carrinho</h2>
+        <button id="fecharCarrinho">✕</button>
+    </div>
+
+    <div id="itensCarrinho">
+        <p>Seu carrinho está vazio.</p>
+    </div>
+
+    <div class="carrinho-footer">
+        <strong>Total: <span id="totalCarrinho">R$ 0,00</span></strong>
+        <button id="finalizarPedido" class="btn-finalizar">
+            Finalizar pedido
+        </button>
+    </div>
+</div>
+
+
+    <section class="titulo">
+
+        <h1>Vinhos Rosé</h1>
+
+        <p>
+            Vinhos intensos e marcantes para momentos especiais.
+        </p>
+
+    </section>
+
+
+    <section class="produtos">
+
+
+        <div class="produto" data-nome="Latitud 33" data-preco="59.90">
+
+            <img src="Imagens/Latitud 33.jpg" alt="Vinho Latitud 33">
+
+            <h3>Latitud 33</h3>
+
+            <p>
+                Vinho Malbec Rosé 2025
+                Mendoza | Argentina
+            </p>
+
+            <div class="preco">
+                R$ 59,90
+            </div>
+
+            <button class="btn-adicionar">
+                Adicionar ao carrinho
+            </button>
+
+        </div>
+
+
+    </section>
+
+    <script>
+
+const botoesAdicionar = document.querySelectorAll('.btn-adicionar');
+
+const contadorCarrinho = document.getElementById('contadorCarrinho');
+const itensCarrinho = document.getElementById('itensCarrinho');
+const totalCarrinho = document.getElementById('totalCarrinho');
+
+const btnCarrinho = document.getElementById('btnCarrinho');
+const carrinho = document.getElementById('carrinho');
+const fecharCarrinho = document.getElementById('fecharCarrinho');
+
+let carrinhoProdutos = [];
+
+
+// ADICIONAR PRODUTO
+botoesAdicionar.forEach(botao => {
+
+    botao.addEventListener('click', function () {
+
+        const produto = botao.closest('.produto');
+
+        const nome = produto.dataset.nome;
+        const preco = parseFloat(produto.dataset.preco);
+
+        const produtoExistente = carrinhoProdutos.find(
+            item => item.nome === nome
+        );
+
+        if (produtoExistente) {
+
+            produtoExistente.quantidade++;
+
+        } else {
+
+            carrinhoProdutos.push({
+                nome: nome,
+                preco: preco,
+                quantidade: 1,
+                imagem: produto.querySelector('img').src
+            });
+
+        }
+
+        atualizarCarrinho();
+
+        carrinho.classList.add('aberto');
+
+    });
+
+});
+
+
+// ATUALIZAR CARRINHO
+function atualizarCarrinho() {
+
+    itensCarrinho.innerHTML = '';
+
+    let total = 0;
+    let quantidadeTotal = 0;
+
+    carrinhoProdutos.forEach((item, index) => {
+
+        total += item.preco * item.quantidade;
+        quantidadeTotal += item.quantidade;
+
+        const div = document.createElement('div');
+
+        div.className = 'item-carrinho';
+
+        div.innerHTML = `
+            <img src="${item.imagem}" class="imagem-carrinho">
+
+            <div class="info-carrinho">
+
+                <strong>${item.nome}</strong>
+
+                <p>
+                    R$ ${item.preco.toFixed(2).replace('.', ',')} cada
+                </p>
+
+                <div class="subtotal-carrinho">
+                    Subtotal:
+                    R$ ${(item.preco * item.quantidade).toFixed(2).replace('.', ',')}
+                </div>
+
+                <div class="controles-carrinho">
+
+                    <button onclick="alterarQuantidade(${index}, -1)">
+                        −
+                    </button>
+
+                    <span>${item.quantidade}</span>
+
+                    <button onclick="alterarQuantidade(${index}, 1)">
+                        +
+                    </button>
+
+                    <button
+                        class="btn-remover"
+                        onclick="removerProduto(${index})">
+                        Remover
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+        itensCarrinho.appendChild(div);
+
+    });
+
+    contadorCarrinho.textContent = quantidadeTotal;
+
+    totalCarrinho.textContent =
+        `R$ ${total.toFixed(2).replace('.', ',')}`;
+
+}
+
+
+// AUMENTAR / DIMINUIR
+function alterarQuantidade(index, valor) {
+
+    carrinhoProdutos[index].quantidade += valor;
+
+    if (carrinhoProdutos[index].quantidade <= 0) {
+        carrinhoProdutos.splice(index, 1);
+    }
+
+    atualizarCarrinho();
+
+}
+
+
+// REMOVER
+function removerProduto(index) {
+
+    carrinhoProdutos.splice(index, 1);
+
+    atualizarCarrinho();
+
+}
+
+
+// ABRIR CARRINHO
+btnCarrinho.addEventListener('click', function () {
+
+    carrinho.classList.add('aberto');
+
+});
+
+
+// FECHAR CARRINHO
+fecharCarrinho.addEventListener('click', function () {
+
+    carrinho.classList.remove('aberto');
+
+});
+
+const finalizarPedido = document.getElementById('finalizarPedido');
+
+finalizarPedido.addEventListener('click', function () {
+
+    if (carrinhoProdutos.length === 0) {
+        alert('Seu carrinho está vazio.');
+        return;
+    }
+
+    let mensagem = '🍷 *PEDIDO VINORA 134*%0A%0A';
+
+    let total = 0;
+
+    carrinhoProdutos.forEach(function (item) {
+
+        const subtotal = item.preco * item.quantidade;
+
+        total += subtotal;
+
+        mensagem +=
+            `${item.quantidade}x ${item.nome} - R$ ${subtotal.toFixed(2).replace('.', ',')}%0A`;
+    });
+
+    mensagem +=
+        `%0A*TOTAL: R$ ${total.toFixed(2).replace('.', ',')}*`;
+
+    const numeroWhatsApp = '5551999083309';
+
+    const link =
+        `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
+
+    window.open(link, '_blank');
+
+});
+
+</script>
+
+</body>
+
+</html>
