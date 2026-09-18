@@ -102,8 +102,8 @@
 
 .hero-image img {
     width: 100%;
-    max-width: 420px;
-    height: 480px;
+    max-width: 700px;
+    height: 600px;
     object-fit: cover;
     border-radius: 30px;
     box-shadow: 0 25px 60px rgba(75,22,76,0.20);
@@ -841,6 +841,77 @@
     background: #f5f2f5 !important;
 }
 
+/* Centraliza o menu e joga a pesquisa para a direita */
+header {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+header nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.search-box {
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.menu-vinhos {
+    position: relative;
+    display: inline-block;
+}
+
+.submenu-vinhos {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4b164c;
+    min-width: 190px;
+    padding: 10px 0;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    z-index: 9999;
+}
+
+.submenu-vinhos a {
+    display: block;
+    padding: 12px 20px;
+    margin: 0;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.menu-vinhos:hover .submenu-vinhos {
+    display: block;
+}
+
+header nav {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 45px !important;
+}
+
+header nav > a {
+    position: relative;
+    z-index: 10000;
+}
+
+.menu-vinhos {
+    position: relative;
+    z-index: 10000;
+}
+
+.submenu-vinhos {
+    left: 50px;
+    transform: translateX(-50%);
+    z-index: 9999;
+}
     </style>
 
 </head>
@@ -946,9 +1017,19 @@
     <header>
         <h2>VINORA|134</h2>
         <nav>
-    <a href="#home">Início</a>
-    <a href="#vinhos">Vinhos</a>
-    <a href="#contato">Contato</a>
+            <a href="#home">Início</a>
+
+   <div class="menu-vinhos">
+    <a href="vinhos.html">Vinhos ▾</a>
+
+    <div class="submenu-vinhos">
+        <a href="vinhos-tintos.html">Vinhos Tintos</a>
+        <a href="vinhos-brancos.html">Vinhos Brancos</a>
+        <a href="vinhos-rose.html">Vinhos Rosé</a>
+    </div>
+</div>
+
+<a href="#contato">Contato</a>
 </nav>
 
 <div class="search-box">
